@@ -1,0 +1,16 @@
+int a = 2, b = 4, c = 5;
+string d = "D" , e = "E", f = "F";
+
+var x1 = a + b + c;	// = 2 + 4 + 5 = 11 (int)
+var x2 = a + b + e;	// = 2 + 4 + E = 24E (string) - helyes 6E (string)
+var x3 = b + d + c;	// = 2 + D + 5 = 2D5 (string)
+var x4 = f + a + b;	// = F + 2 + 4 = F24 (string)
+
+var x5 = a + b * c;	// = 2 + (4 * 5) = 2 + 20 = 22 (int)
+x5 /= 8;		// = 22 / 8 = 2 (int)
+var x6 = x5 / b;	// = 2 / 4 = 0 (int)	
+x6++;			// = 0 + 1 = 1 (int)
+var x7 = x6 / 2f;	// = 1 / 2f = 0.5f (float)
+x7--;			// = 0.5f - 1 = -0.5f (float)
+var x8 = -1 * x7;	// = -1 * -0.5f = 0.5f (float)
+x8 *= x8;		// = 0.5f * 0.5f = 2.5f (float) - helyes 0.25f (float)
