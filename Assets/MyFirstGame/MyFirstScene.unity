@@ -1098,7 +1098,7 @@ GameObject:
   - component: {fileID: 1575119960}
   - component: {fileID: 1575119959}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Pista
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
