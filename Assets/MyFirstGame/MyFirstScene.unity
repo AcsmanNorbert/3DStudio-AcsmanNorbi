@@ -2465,6 +2465,7 @@ GameObject:
   - component: {fileID: 1575119965}
   - component: {fileID: 1575119964}
   - component: {fileID: 1575119966}
+  - component: {fileID: 1575119967}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -2648,6 +2649,9 @@ MonoBehaviour:
   textComponent: {fileID: 750312360}
   disableOnDeath: {fileID: 1575119959}
   enableOnDeath: {fileID: 1336324328}
+  invincibilityTime: 1
+  flickTime: 0.1
+  collider: {fileID: 1575119960}
 --- !u!114 &1575119966
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2661,6 +2665,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 1806027724}
+--- !u!114 &1575119967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1575119958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fd0d2984d86541499387067b57c4d7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1631591872
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using System.Collections;
 
 public class Damageable : MonoBehaviour
 {
@@ -10,6 +11,11 @@ public class Damageable : MonoBehaviour
     [SerializeField] Behaviour disableOnDeath;
     [SerializeField] GameObject enableOnDeath;
 
+    [Space]
+    [SerializeField] float invincibilityTime;
+    [SerializeField] float flickTime = 0.1f;
+    [SerializeField] new Collider collider;
+
     float currentHealth;
 
     private void Start()
@@ -18,9 +24,22 @@ public class Damageable : MonoBehaviour
         UpdateHealthUI();
     }
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            currentHealth = startHealth;
+            UpdateHealthUI();
+        }
+    }
+
     public void Damage(float damage)
     {
         currentHealth -= damage;
+
+        collider.enabled = false;
+        StartCoroutine(HandleInvincible());
+
         if (currentHealth <= 0)
         {
             currentHealth = 0;
@@ -43,12 +62,25 @@ public class Damageable : MonoBehaviour
         textComponent.color = healthGradient.Evaluate(rate);
     }
 
-    void Update()
+    IEnumerator HandleInvincible()
     {
-        if (Input.GetKeyDown(KeyCode.F))
+        collider.enabled = false;
+        float startTime = Time.time;
+        bool rendererEnabled = true;
+        while (Time.time - startTime < invincibilityTime)
         {
-            currentHealth = startHealth;
-            UpdateHealthUI();
+            rendererEnabled = !rendererEnabled;
+            SetRendererEnabled(rendererEnabled);
+
+            yield return new WaitForSeconds(flickTime);
         }
+        SetRendererEnabled(true);
+        collider.enabled = true;
+    }
+
+    void SetRendererEnabled(bool enabled)
+    {
+        foreach (Renderer renderer in GetComponentsInChildren<Renderer>())
+            renderer.enabled = enabled;
     }
 }
